@@ -551,20 +551,32 @@ export default function App() {
               )}
             </div>
 
-            <div className="grid grid-cols-1 gap-2">
-              {chartData.sort((a,b) => b.value - a.value).map((item) => (
-                <div key={item.name} className="flex items-center gap-3 p-3 bg-white rounded-2xl border border-zinc-100 hover:border-zinc-200 transition-all group">
-                  <div className="w-2 h-8 rounded-full" style={{ backgroundColor: item.color }} />
-                  <div className="flex-1">
-                    <p className="text-xs font-bold text-zinc-400 uppercase tracking-wider">{item.name}</p>
-                    <p className="font-bold text-zinc-900">₹{item.value.toLocaleString()}</p>
-                  </div>
-                  <div className="text-xs font-bold text-zinc-400 bg-zinc-50 px-2 py-1 rounded-lg">
-                    {((item.value / totalExpense) * 100).toFixed(0)}%
-                  </div>
-                </div>
-              ))}
-            </div>
+           <div className="grid grid-cols-1 gap-2">
+  {[...chartData].sort((a,b) => b.value - a.value).map((item) => (
+    <div key={item.name} className="flex items-center gap-3 p-3 bg-white rounded-2xl border border-zinc-100 hover:border-zinc-200 transition-all group">
+      
+      <div 
+        className="w-2 h-8 rounded-full" 
+        style={{ backgroundColor: item.color }} 
+      />
+
+      <div className="flex-1">
+        <p className="text-xs font-bold text-zinc-400 uppercase tracking-wider">
+          {item.name}
+        </p>
+
+        <p className="font-bold text-zinc-900">
+          ₹{item.value.toLocaleString()}
+        </p>
+      </div>
+
+      <div className="text-xs font-bold text-zinc-400 bg-zinc-50 px-2 py-1 rounded-lg">
+        {((item.value / totalExpense) * 100).toFixed(0)}%
+      </div>
+
+    </div>
+  ))}
+</div>
           </section>
 
           {/* Expense List */}
